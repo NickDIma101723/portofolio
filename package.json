@@ -1,0 +1,24 @@
+{
+  "name": "niko-asp-portfolio",
+  "version": "1.0.0",
+  "description": "Creative Developer Portfolio for Niko Asp",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required for static HTML'",
+    "start": "echo 'Static site - no start command needed'"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "html",
+    "css",
+    "tailwind",
+    "javascript"
+  ],
+  "author": "Niko Asp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickDIma101723/portofolio.git"
+  }
+}

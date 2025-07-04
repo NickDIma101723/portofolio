@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niko Asp - Creative Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #f5f5f5;
+        }
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom animations - Stronger effects */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-120px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(120px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(80px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        .animate-fade-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        .animate-scale {
+            animation: scaleIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        /* Strong hover effects */
+        .hover-lift {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+        }
+        
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-12px) scale(1.08);
+            background: rgba(255,255,255,0.2) !important;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #000, #666);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-3px);
+            color: #000;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-16px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+        }
+        
+        /* Skill bar styling */
+        .skill-bar {
+            width: 0;
+        }
+        
+        /* Window onload fade-in animation - Enhanced */
+        body {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        body.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enhanced fade-in for main content sections */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Scroll-triggered fade-in animations */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-fade.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-fade-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-fade-left.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-fade-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-fade-right.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <!-- Minimal Portfolio Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="text-lg font-light">
+                    <a href="index.html" class="text-black hover:text-gray-600 transition-colors">
+                        <span class="font-['Space_Grotesk'] font-light">niko asp</span><span class="text-gray-400 font-thin">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-light text-gray-700 hover:text-black transition-all duration-300 nav-link">home</a>
+                    <a href="#work" class="text-sm font-light text-gray-700 hover:text-black transition-all duration-300 nav-link">work</a>
+                    <a href="#about" class="text-sm font-light text-gray-700 hover:text-black transition-all duration-300 nav-link">about</a>
+                    <a href="#reflection" class="text-sm font-light text-gray-700 hover:text-black transition-all duration-300 nav-link">reflection</a>
+                    <a href="#contact" class="text-sm font-light text-gray-700 hover:text-black transition-all duration-300 nav-link">contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-toggle" class="md:hidden flex flex-col space-y-1">
+                    <span class="w-5 h-px bg-gray-700 transition-all duration-300"></span>
+                    <span class="w-5 h-px bg-gray-700 transition-all duration-300"></span>
+                    <span class="w-5 h-px bg-gray-700 transition-all duration-300"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white/90 backdrop-blur-md hidden">
+            <div class="px-6 py-6 space-y-4">
+                <a href="#home" class="block text-sm font-light text-gray-700 hover:text-black transition-colors">home</a>
+                <a href="#work" class="block text-sm font-light text-gray-700 hover:text-black transition-colors">work</a>
+                <a href="#about" class="block text-sm font-light text-gray-700 hover:text-black transition-colors">about</a>
+                <a href="#reflection" class="block text-sm font-light text-gray-700 hover:text-black transition-colors">reflection</a>
+                <a href="#contact" class="block text-sm font-light text-gray-700 hover:text-black transition-colors">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Minimalist Design -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 fade-in-section">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="space-y-12">
+                <!-- Main heading -->
+                <div class="space-y-6">
+                    <h1 class="font-['Space_Grotesk'] text-7xl md:text-8xl lg:text-9xl font-bold leading-tight">
+                        NIKO<br>
+                        <span class="font-light">ASP</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-600 font-light tracking-wide">
+                        Creative Developer & Digital Craftsman
+                    </p>
+                </div>
+                
+                <!-- Brief description -->
+                <div class="max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-700 leading-relaxed font-['Lato']">
+                        I build beautiful, functional digital experiences using modern technologies. 
+                        Passionate about clean code, elegant design, and user-centered solutions.
+                    </p>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#work" class="bg-black text-white px-10 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-gray-800 hover:shadow-lg hover:shadow-black/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
+                        Explore Work
+                    </a>
+                    <a href="mailto:hello@nikoasp.dev" class="border-2 border-black text-black px-10 py-4 rounded-full text-sm font-medium tracking-wide hover:bg-black hover:text-white hover:shadow-lg hover:shadow-black/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
+                        Let's Connect
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies Section -->
+    <section class="py-20 md:py-24 bg-black text-white fade-in-section">
+        <div class="max-w-10xl mx-auto px-4 md:px-8">
+            <div class="text-center">
+                <h2 class="font-['Space_Grotesk'] text-4xl md:text-5xl mb-6 font-semibold tracking-wider">
+                    SKILLS & TECHNOLOGIES
+                </h2>
+                <p class="text-gray-300 mb-8 max-w-3xl mx-auto text-lg">
+                    Mastering modern technologies to build innovative, scalable, and beautiful digital experiences
+                </p>
+                
+                <!-- Technology Icons/Logos Layout -->
+                <div class="max-w-full mx-auto mb-16">
+                    <div class="flex justify-between gap-2 md:gap-4">
+                        <div class="w-[23%] rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 p-8 skill-card">
+                            <i class="fab fa-html5 text-6xl text-orange-400 mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] font-semibold text-lg">HTML5</h4>
+                            <p class="text-sm text-gray-400 mt-2">Semantic Markup</p>
+                        </div>
+                        <div class="w-[23%] rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 p-8 skill-card">
+                            <i class="fab fa-css3-alt text-6xl text-blue-400 mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] font-semibold text-lg">Tailwind CSS</h4>
+                            <p class="text-sm text-gray-400 mt-2">Utility-First CSS</p>
+                        </div>
+                        <div class="w-[23%] rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 p-8 skill-card">
+                            <i class="fas fa-paint-brush text-6xl text-purple-400 mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] font-semibold text-lg">UI/UX Design</h4>
+                            <p class="text-sm text-gray-400 mt-2">User Experience</p>
+                        </div>
+                        <div class="w-[23%] rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 p-8 skill-card">
+                            <i class="fab fa-react text-6xl text-cyan-400 mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] font-semibold text-lg">React Native</h4>
+                            <p class="text-sm text-gray-400 mt-2">Mobile Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-gradient-to-br from-gray-50 to-white scroll-fade">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-16">
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-8 scroll-fade-left">
+                    <div class="space-y-6">
+                        <h2 class="font-['Space_Grotesk'] text-5xl font-bold mb-6 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">About Me</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-black to-gray-400 rounded-full mb-8"></div>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            I'm passionate about creating digital experiences that bridge the gap between design and functionality. 
+                            My journey in development started with a fascination for how beautiful interfaces can tell compelling stories.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            With 5+ years of experience, I specialize in React Native development, modern UI/UX design, and crafting 
+                            pixel-perfect user interfaces. I believe that great design should be both beautiful and functional, 
+                            helping businesses transform their ideas into powerful digital solutions that users love.
+                        </p>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8">
+                        <div class="text-center scroll-fade">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                                <div class="font-['Space_Grotesk'] text-4xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">150+</div>
+                                <p class="text-sm text-gray-600 font-medium">Projects Completed</p>
+                            </div>
+                        </div>
+                        <div class="text-center scroll-fade">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                                <div class="font-['Space_Grotesk'] text-4xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">5+</div>
+                                <p class="text-sm text-gray-600 font-medium">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="text-center scroll-fade">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+                                <div class="font-['Space_Grotesk'] text-4xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">30+</div>
+                                <p class="text-sm text-gray-600 font-medium">Happy Clients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Column -->
+                <div class="space-y-8 scroll-fade-right">
+                    <div>
+                        <h3 class="font-['Space_Grotesk'] text-2xl font-bold mb-6">Core Skills</h3>
+                        <div class="space-y-6">
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-800">HTML & Tailwind CSS</span>
+                                    <span class="text-sm text-gray-600 font-medium">95%</span>
+                                </div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full bg-gradient-to-r from-black to-gray-700 rounded-full" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-800">UI/UX Design</span>
+                                    <span class="text-sm text-gray-600 font-medium">88%</span>
+                                </div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full bg-gradient-to-r from-black to-gray-700 rounded-full" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-800">React Native</span>
+                                    <span class="text-sm text-gray-600 font-medium">82%</span>
+                                </div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full bg-gradient-to-r from-black to-gray-700 rounded-full" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-800">JSX & Components</span>
+                                    <span class="text-sm text-gray-600 font-medium">90%</span>
+                                </div>
+                                <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-bar h-full bg-gradient-to-r from-black to-gray-700 rounded-full" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="bg-black text-white p-8 rounded-2xl scroll-fade">
+                        <h4 class="font-['Space_Grotesk'] text-xl font-semibold mb-4">Ready to collaborate?</h4>
+                        <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                            Let's discuss your next project and bring your vision to life with modern, elegant design.
+                        </p>
+                        <a href="mailto:hello@nikoasp.dev" class="inline-block bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                            Start a Conversation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section - Card Grid -->
+    <section id="work" class="py-32 bg-white scroll-fade">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 scroll-fade">
+                <h2 class="font-['Space_Grotesk'] text-5xl font-bold mb-6">Selected Work</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    A collection of projects that showcase my passion for creating 
+                    innovative digital experiences.
+                </p>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group hover-lift project-card scroll-fade">
+                    <div class="bg-black aspect-[4/3] rounded-lg flex items-center justify-center mb-6">
+                        <div class="text-center text-white">
+                            <i class="fas fa-mobile-alt text-4xl mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] text-xl font-semibold">Mobile App</h4>
+                        </div>
+                    </div>
+                    <h3 class="font-['Space_Grotesk'] text-xl font-semibold mb-2">React Native App</h3>
+                    <p class="text-gray-600 mb-4">Cross-platform mobile application built with React Native and modern UI components.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">View Live</a>
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="group hover-lift project-card scroll-fade">
+                    <div class="bg-gray-900 aspect-[4/3] rounded-lg flex items-center justify-center mb-6">
+                        <div class="text-center text-white">
+                            <i class="fas fa-paint-brush text-4xl mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] text-xl font-semibold">UI/UX Design</h4>
+                        </div>
+                    </div>
+                    <h3 class="font-['Space_Grotesk'] text-xl font-semibold mb-2">Design System</h3>
+                    <p class="text-gray-600 mb-4">Complete design system with components, typography, and user experience flows.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">View Live</a>
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="group hover-lift project-card scroll-fade">
+                    <div class="bg-gray-800 aspect-[4/3] rounded-lg flex items-center justify-center mb-6">
+                        <div class="text-center text-white">
+                            <i class="fab fa-css3-alt text-4xl mb-4"></i>
+                            <h4 class="font-['Space_Grotesk'] text-xl font-semibold">Tailwind Project</h4>
+                        </div>
+                    </div>
+                    <h3 class="font-['Space_Grotesk'] text-xl font-semibold mb-2">Modern Website</h3>
+                    <p class="text-gray-600 mb-4">Responsive website built with Tailwind CSS and optimized user interface.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">View Live</a>
+                        <a href="#" class="text-sm font-medium hover:text-gray-600 transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection Section -->
+    <section id="reflection" class="py-32 bg-gradient-to-br from-gray-50 to-white scroll-fade">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 scroll-fade">
+                <h2 class="font-['Space_Grotesk'] text-5xl font-bold mb-6 bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent">Learning Journey & Reflection</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-black to-gray-400 rounded-full mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Reflecting on my development process, challenges overcome, and goals for continuous growth.
+                </p>
+            </div>
+
+            <!-- Reflection Content -->
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Left Column - Reflection -->
+                <div class="space-y-12 scroll-fade-left">
+                    <!-- Strong Points -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-3 h-3 bg-black rounded-full mr-4"></div>
+                            <h3 class="font-['Space_Grotesk'] text-2xl font-bold text-gray-900">Goede Punten</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Ik kan snel moderne websites maken met Tailwind CSS en goede HTML code</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Ik let goed op hoe makkelijk websites zijn voor gebruikers</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Ik kan mooie, simpele designs maken die er goed uitzien</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Ik werk goed samen met AI tools om snel te werken</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenges -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-3 h-3 bg-gray-600 rounded-full mr-4"></div>
+                            <h3 class="font-['Space_Grotesk'] text-2xl font-bold text-gray-900">Moeilijke Dingen</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Animaties kunnen soms problemen geven - ik moet meer leren over JavaScript timing</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">CSS Grid is nog moeilijk voor mij, vooral voor responsive websites</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Backend en API's zijn dingen waar ik meer over wil leren</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Learning & Goals -->
+                <div class="space-y-12 scroll-fade-right">
+                    <!-- What I Learned -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-3 h-3 bg-gray-800 rounded-full mr-4"></div>
+                            <h3 class="font-['Space_Grotesk'] text-2xl font-bold text-gray-900">Wat Heb Ik Geleerd?</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">CSS frameworks zoals Tailwind maken het werk veel sneller</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Goede planning helpt om problemen te voorkomen</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Hoe gebruikers de website gebruiken is net zo belangrijk als hoe het eruit ziet</p>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <p class="text-gray-700 leading-relaxed">Feedback van anderen helpt om het werk beter te maken</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Learning Goals -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-3 h-3 bg-black rounded-full mr-4"></div>
+                            <h3 class="font-['Space_Grotesk'] text-2xl font-bold text-gray-900">Mijn Leerdoelen</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-gray-300 pl-6">
+                                <h4 class="font-['Space_Grotesk'] font-semibold text-gray-900 mb-2">CSS Grid Beter Leren</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">Ik wil beter worden met CSS Grid voor mooiere layouts op alle apparaten.</p>
+                            </div>
+                            <div class="border-l-2 border-gray-300 pl-6">
+                                <h4 class="font-['Space_Grotesk'] font-semibold text-gray-900 mb-2">Meer JavaScript Leren</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">Ik wil meer kunnen met JavaScript, zoals scroll animaties en interactieve delen.</p>
+                            </div>
+                            <div class="border-l-2 border-gray-300 pl-6">
+                                <h4 class="font-['Space_Grotesk'] font-semibold text-gray-900 mb-2">React Native Beter Maken</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">Ik wil leren hoe ik React Native apps sneller en beter kan maken.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Section -->
+            <div class="mt-20 bg-black text-white rounded-2xl p-8 scroll-fade">
+                <div class="flex items-center mb-8">
+                    <div class="w-4 h-4 bg-white rounded-full mr-4"></div>
+                    <h3 class="font-['Space_Grotesk'] text-2xl font-bold">Feedback & Actieplan</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="font-['Space_Grotesk'] font-semibold text-gray-200 mb-6">Feedback die ik kreeg</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">"Goede visuele hiërarchie en clean design"</span>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">"Goed gebruik van moderne CSS technieken"</span>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">"Meer aandacht voor toegankelijkheid (ARIA labels)"</span>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">"JavaScript code kan beter georganiseerd"</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-['Space_Grotesk'] font-semibold text-gray-200 mb-6">Mijn Plan</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">Toegankelijkheid toevoegen aan alle projecten</span>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">JavaScript code beter organiseren in modules</span>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-2 h-2 bg-gray-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <span class="text-gray-300 leading-relaxed">Elke week code reviews doen voor verbetering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Minimal -->
+    <section id="contact" class="py-32 bg-black text-white scroll-fade">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div>
+                <h2 class="font-['Space_Grotesk'] text-5xl font-bold mb-8">Let's Create Something Amazing</h2>
+                <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Ready to bring your ideas to life? I'm always excited to collaborate 
+                    on new projects and challenges.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="mailto:hello@nikoasp.dev" class="bg-white text-black px-8 py-4 rounded-full text-sm font-medium hover:bg-gray-100 hover:shadow-lg hover:shadow-white/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
+                        Send Email
+                    </a>
+                    <a href="contact.html" class="border border-white px-8 py-4 rounded-full text-sm font-medium hover:bg-white hover:text-black hover:shadow-lg hover:shadow-white/20 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
+                        Get In Touch
+                    </a>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-8 mt-16 scroll-fade">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-dribbble text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="font-light text-lg mb-4 md:mb-0">
+                    <span class="font-['Space_Grotesk'] font-light">niko asp</span><span class="text-gray-400 font-thin">.</span>
+                </div>
+                <p class="text-sm text-gray-600">
+                    © 2025 Niko Asp. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add script tag before closing body tag -->
+    <script src="mobileNav.js"></script>
+    <script>
+        // Enhanced window onload fade-in animation
+        window.addEventListener('load', () => {
+            // Add a slight delay for smoother effect
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Progressive fade-in for sections
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.fade-in-section');
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, index * 200); // Stagger the animations
+                });
+            }, 300);
+        });
+
+        // Scroll-triggered animations
+        function handleScrollAnimations() {
+            const scrollElements = document.querySelectorAll('.scroll-fade, .scroll-fade-left, .scroll-fade-right');
+            
+            scrollElements.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('in-view');
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            
+            // Navbar scroll effect
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Initial check for scroll animations
+        window.addEventListener('load', () => {
+            setTimeout(handleScrollAnimations, 500);
+        });
+    </script>
+</body>
+</html>
