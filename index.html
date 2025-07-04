@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black transition-all duration-300">
+  <!-- Loading Screen -->
+  <div id="loader" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
+    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0" id="navbar">
+    <div class="absolute inset-0 bg-white/5 backdrop-blur-xl border-b border-white/10" id="nav-bg"></div>
+    <div class="container mx-auto px-6 py-6 relative z-10">
+      <div class="flex justify-between items-center">
+        <div class="text-3xl font-black tracking-tight transform transition-all duration-300 hover:scale-110">
+          <a href="index.html" class="text-black font-bold hover:opacity-80 transition-all duration-500">
+            Portfolio
+          </a>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <ul class="hidden lg:flex space-x-2">
+          <li><a href="index.html" class="nav-link-advanced active" data-text="Home"><span>Home</span></a></li>
+          <li><a href="pages/projects.html" class="nav-link-advanced" data-text="Projects"><span>Projects</span></a></li>
+          <li><a href="pages/skills.html" class="nav-link-advanced" data-text="Skills"><span>Skills</span></a></li>
+          <li><a href="pages/feedback.html" class="nav-link-advanced" data-text="Feedback"><span>Feedback</span></a></li>
+          <li><a href="pages/goals.html" class="nav-link-advanced" data-text="Goals"><span>Goals</span></a></li>
+          <li><a href="pages/travel.html" class="nav-link-advanced" data-text="Travel"><span>Travel</span></a></li>
+          <li><a href="pages/contact.html" class="nav-link-advanced" data-text="Contact"><span>Contact</span></a></li>
+        </ul>
+
+        <!-- CTA Button -->
+        <div class="hidden md:block">
+          <a href="pages/contact.html" class="cta-button">
+            <span class="cta-text">Let's Work Together</span>
+            <i class="fas fa-arrow-right cta-arrow"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="lg:hidden relative z-10" id="mobile-menu-btn">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="mobile-menu-content">
+          <ul class="space-y-8">
+            <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+            <li><a href="pages/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="pages/skills.html" class="mobile-nav-link">Skills</a></li>
+            <li><a href="pages/feedback.html" class="mobile-nav-link">Feedback</a></li>
+            <li><a href="pages/goals.html" class="mobile-nav-link">Goals</a></li>
+            <li><a href="pages/travel.html" class="mobile-nav-link">Travel</a></li>
+            <li><a href="pages/contact.html" class="mobile-nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="pt-0">
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+      <!-- Animated Background -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-black"></div>
+        <div class="floating-particles"></div>
+      </div>
+      
+      <!-- Hero Content -->
+      <div class="container mx-auto px-6 py-32 relative z-10">
+        <div class="text-center">
+          <div class="hero-badge mb-8 opacity-0 slide-up">
+            <span class="badge-text">Welcome to my digital space</span>
+          </div>
+          
+          <h1 class="hero-title opacity-0 slide-up delay-200">
+            <span class="hero-line">I'm a</span>
+            <span class="hero-main text-white">
+              Creative Developer
+            </span>
+            <span class="hero-line">& Designer</span>
+          </h1>
+          
+          <p class="hero-subtitle opacity-0 slide-up delay-400">
+            Crafting digital experiences that inspire, engage, and deliver results.<br>
+            Specialized in modern web technologies and innovative design solutions.
+          </p>
+          
+          <div class="hero-buttons opacity-0 slide-up delay-600">
+            <a href="pages/projects.html" class="hero-btn-primary">
+              <span>Explore My Work</span>
+              <i class="fas fa-rocket"></i>
+            </a>
+            <a href="pages/contact.html" class="hero-btn-secondary">
+              <span>Let's Collaborate</span>
+              <i class="fas fa-handshake"></i>
+            </a>
+          </div>
+          
+          <div class="hero-stats opacity-0 slide-up delay-800">
+            <div class="stat-item">
+              <div class="stat-number" data-count="150">0</div>
+              <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="98">0</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" data-count="5">0</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Enhanced Floating Elements -->
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator opacity-0 fade-in delay-1000">
+        <div class="scroll-line"></div>
+        <span>Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-32 bg-white relative overflow-hidden">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="opacity-0 slide-up">
+            <h2 class="section-title">About Me</h2>
+            <div class="section-subtitle">Passionate about creating digital experiences</div>
+            <p class="text-lg text-black mb-8 leading-relaxed opacity-80">
+              I'm a full-stack developer and designer with over 5 years of experience creating 
+              innovative web solutions. My passion lies in transforming complex ideas into 
+              beautiful, functional, and user-friendly digital experiences.
+            </p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <i class="fas fa-code text-2xl text-black"></i>
+                <div>
+                  <h4 class="font-bold">Clean Code</h4>
+                  <p class="text-black opacity-70">Writing maintainable, scalable code</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-palette text-2xl text-black"></i>
+                <div>
+                  <h4 class="font-bold">Creative Design</h4>
+                  <p class="text-black opacity-70">Innovative and user-centered designs</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i class="fas fa-rocket text-2xl text-black"></i>
+                <div>
+                  <h4 class="font-bold">Performance</h4>
+                  <p class="text-black opacity-70">Optimized for speed and efficiency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="opacity-0 slide-up delay-200">
+            <div class="about-visual">
+              <div class="skill-orbit">
+                <div class="skill-planet skill-js">JS</div>
+                <div class="skill-planet skill-react">React</div>
+                <div class="skill-planet skill-node">Node</div>
+                <div class="skill-planet skill-css">CSS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-32 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 opacity-0 slide-up">
+          <h2 class="section-title">What I Do</h2>
+          <div class="section-subtitle">Full-spectrum digital solutions</div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="service-card opacity-0 slide-up">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="service-title">Web Development</h3>
+            <p class="service-description">
+              Custom websites and web applications built with modern technologies 
+              and best practices for optimal performance.
+            </p>
+            <ul class="service-features">
+              <li>Responsive Design</li>
+              <li>Performance Optimization</li>
+              <li>SEO Implementation</li>
+            </ul>
+          </div>
+          
+          <div class="service-card opacity-0 slide-up delay-200">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="service-title">Mobile Development</h3>
+            <p class="service-description">
+              Cross-platform mobile applications that deliver native-like 
+              experiences across iOS and Android devices.
+            </p>
+            <ul class="service-features">
+              <li>React Native</li>
+              <li>Progressive Web Apps</li>
+              <li>Native Performance</li>
+            </ul>
+          </div>
+          
+          <div class="service-card opacity-0 slide-up delay-400">
+            <div class="service-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3 class="service-title">UI/UX Design</h3>
+            <p class="service-description">
+              User-centered design solutions that combine aesthetics with 
+              functionality to create engaging digital experiences.
+            </p>
+            <ul class="service-features">
+              <li>User Research</li>
+              <li>Wireframing & Prototyping</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Overview Section -->
+    <section id="stats" class="py-32 bg-black text-white relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="grid-pattern"></div>
+      </div>
+      
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16 opacity-0 slide-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">Impact by Numbers</h2>
+          <p class="text-xl text-white opacity-80">Real results from real projects</p>
+        </div>
+        
+        <div id="stats-container" class="grid md:grid-cols-4 gap-8">
+          <!-- Stats will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Preview -->
+    <section id="projects" class="py-32 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 opacity-0 slide-up">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-subtitle">Showcasing my best work</div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8" id="featured-projects">
+          <!-- Projects will be loaded dynamically -->
+        </div>
+        
+        <div class="text-center mt-16 opacity-0 slide-up delay-600">
+          <a href="pages/projects.html" class="cta-button-large">
+            <span>View All Projects</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 bg-black text-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 opacity-0 slide-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">What Clients Say</h2>
+          <p class="text-xl text-white opacity-80">Don't just take my word for it</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8" id="testimonials-container">
+          <!-- Testimonials will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="py-32 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 opacity-0 slide-up">
+          <h2 class="section-title">Technologies I Use</h2>
+          <div class="section-subtitle">Cutting-edge tools for modern solutions</div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" id="technologies-grid">
+          <!-- Technologies will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 bg-black text-white">
+      <div class="container mx-auto px-6 text-center">
+        <div class="max-w-4xl mx-auto opacity-0 slide-up">
+          <h2 class="text-4xl md:text-6xl font-bold mb-8">
+            Ready to Start Your Project?
+          </h2>
+          <p class="text-xl md:text-2xl text-white opacity-80 mb-12">
+            Let's work together to bring your vision to life with cutting-edge technology and creative design.
+          </p>
+          <div class="cta-buttons">
+            <a href="pages/contact.html" class="cta-button-xl">
+              <span>Start a Project</span>
+              <i class="fas fa-rocket"></i>
+            </a>
+            <a href="pages/projects.html" class="cta-button-outline">
+              <span>View Portfolio</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="text-center">
+        <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+          <a href="#" class="hover:text-gray-300 transition-colors"><i class="fab fa-github"></i></a>
+          <a href="#" class="hover:text-gray-300 transition-colors"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="hover:text-gray-300 transition-colors"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
