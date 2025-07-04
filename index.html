@@ -7,12 +7,27 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .opacity-0 { opacity: 0; }
+    .slide-up { transform: translateY(20px); transition: all 0.6s ease; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-400 { transition-delay: 0.4s; }
+    .delay-600 { transition-delay: 0.6s; }
+    .delay-800 { transition-delay: 0.8s; }
+    .fade-in { opacity: 1; transform: translateY(0); }
+    .hero-title { font-size: 3rem; font-weight: bold; margin-bottom: 1rem; }
+    .section-title { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
+    .service-card { padding: 2rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-bottom: 1rem; }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+    .nav-link-advanced { padding: 0.5rem 1rem; transition: all 0.3s ease; }
+    .nav-link-advanced:hover { color: #666; }
+    .cta-button { background: #000; color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; transition: all 0.3s ease; }
+    .cta-button:hover { background: #333; }
+  </style>
 </head>
 <body class="bg-white text-black transition-all duration-300">
-  <!-- Loading Screen -->
-  <div id="loader" class="fixed inset-0 z-50 bg-black flex items-center justify-center">
-    <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
-  </div>
+
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0" id="navbar">
@@ -72,11 +87,11 @@
   </nav>
 
   <!-- Hero Section -->
-  <main class="pt-0">
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+  <main class="pt-20">
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
       <!-- Animated Background -->
       <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-black"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-white to-gray-50"></div>
         <div class="floating-particles"></div>
       </div>
       
@@ -84,45 +99,45 @@
       <div class="container mx-auto px-6 py-32 relative z-10">
         <div class="text-center">
           <div class="hero-badge mb-8 opacity-0 slide-up">
-            <span class="badge-text">Welcome to my digital space</span>
+            <span class="badge-text text-black bg-gray-100 px-4 py-2 rounded-full">Welcome to my digital space</span>
           </div>
           
           <h1 class="hero-title opacity-0 slide-up delay-200">
-            <span class="hero-line">I'm a</span>
-            <span class="hero-main text-white">
+            <span class="hero-line text-gray-600">I'm a</span>
+            <span class="hero-main text-black">
               Creative Developer
             </span>
-            <span class="hero-line">& Designer</span>
+            <span class="hero-line text-gray-600">& Designer</span>
           </h1>
           
-          <p class="hero-subtitle opacity-0 slide-up delay-400">
+          <p class="hero-subtitle opacity-0 slide-up delay-400 text-gray-700">
             Crafting digital experiences that inspire, engage, and deliver results.<br>
             Specialized in modern web technologies and innovative design solutions.
           </p>
           
           <div class="hero-buttons opacity-0 slide-up delay-600">
-            <a href="pages/projects.html" class="hero-btn-primary">
+            <a href="pages/projects.html" class="hero-btn-primary bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all duration-300 inline-flex items-center space-x-2">
               <span>Explore My Work</span>
               <i class="fas fa-rocket"></i>
             </a>
-            <a href="pages/contact.html" class="hero-btn-secondary">
+            <a href="pages/contact.html" class="hero-btn-secondary border-2 border-black text-black px-8 py-4 rounded-lg hover:bg-black hover:text-white transition-all duration-300 inline-flex items-center space-x-2">
               <span>Let's Collaborate</span>
               <i class="fas fa-handshake"></i>
             </a>
           </div>
           
-          <div class="hero-stats opacity-0 slide-up delay-800">
-            <div class="stat-item">
-              <div class="stat-number" data-count="150">0</div>
-              <div class="stat-label">Projects Delivered</div>
+          <div class="hero-stats opacity-0 slide-up delay-800 grid grid-cols-3 gap-8 mt-16">
+            <div class="stat-item text-center">
+              <div class="stat-number text-4xl font-bold text-black" data-count="150">0</div>
+              <div class="stat-label text-gray-600">Projects Delivered</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-number" data-count="98">0</div>
-              <div class="stat-label">Client Satisfaction</div>
+            <div class="stat-item text-center">
+              <div class="stat-number text-4xl font-bold text-black" data-count="98">0</div>
+              <div class="stat-label text-gray-600">Client Satisfaction</div>
             </div>
-            <div class="stat-item">
-              <div class="stat-number" data-count="5">0</div>
-              <div class="stat-label">Years Experience</div>
+            <div class="stat-item text-center">
+              <div class="stat-number text-4xl font-bold text-black" data-count="5">0</div>
+              <div class="stat-label text-gray-600">Years Experience</div>
             </div>
           </div>
         </div>
@@ -138,9 +153,9 @@
       </div>
       
       <!-- Scroll Indicator -->
-      <div class="scroll-indicator opacity-0 fade-in delay-1000">
-        <div class="scroll-line"></div>
-        <span>Scroll to explore</span>
+      <div class="scroll-indicator opacity-0 fade-in delay-1000 absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+        <div class="scroll-line w-px h-12 bg-black mx-auto mb-2"></div>
+        <span class="text-black text-sm">Scroll to explore</span>
       </div>
     </section>
 
@@ -362,5 +377,26 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    // Simple animation trigger
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        document.querySelectorAll('.opacity-0').forEach(el => {
+          el.classList.add('fade-in');
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, 500);
+      
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html>

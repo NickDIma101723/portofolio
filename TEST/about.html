@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - AT. Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>About - HypeHive Rotterdam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
 </head>
-<body class="bg-white text-black font-inter overflow-x-hidden">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <a href="index.html" class="font-space text-2xl font-bold text-black hover:opacity-70 transition-opacity">
-                    AT.
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-black transition-colors font-medium">Home</a>
-                    <a href="about.html" class="text-black font-medium border-b-2 border-black pb-1">About</a>
-                    <a href="projects.html" class="text-gray-600 hover:text-black transition-colors font-medium">Work</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-black transition-colors font-medium">Contact</a>
+<body class="bg-white text-black">
+    <!-- Navbar - Pure Tailwind Design -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <!-- Left side - Menu items -->
+                <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                    <a href="index.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
+                        <span>Home</span>
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="collection.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
+                        <span>Shop</span>
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="about.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
+                        <span>About</span>
+                        <div class="absolute -bottom-2 left-0 w-full h-0.5 bg-black transition-all duration-300"></div>
+                    </a>
                 </div>
                 
-                <!-- Mobile menu button -->
-                <button class="md:hidden p-2" id="mobile-menu-btn">
-                    <div class="w-6 h-0.5 bg-black mb-1"></div>
-                    <div class="w-6 h-0.5 bg-black mb-1"></div>
-                    <div class="w-6 h-0.5 bg-black"></div>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navigation -->
-    <div class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform md:hidden" id="mobile-menu">
-        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-medium">
-            <a href="index.html" class="text-gray-600 hover:text-black transition-colors">Home</a>
-            <a href="about.html" class="text-black">About</a>
-            <a href="projects.html" class="text-gray-600 hover:text-black transition-colors">Work</a>
-            <a href="contact.html" class="text-gray-600 hover:text-black transition-colors">Contact</a>
-        </div>
-    </div>
+                <!-- Center - Logo -->
+                <div class="flex-1 flex justify-center md:flex-none">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <span class="font-poppins font-bold text-lg lg:text-xl text-black">HYPE</span>
+                        <div class="w-0.5 h-6 bg-black"></div>
+                        <span class="font-poppins font-bold text-lg lg:text-xl text-black">HIVE</span>
+                    </a>
+                </div>
+                
+                <!-- Right side - Menu items -->
+                <div class="hidden md:flex items-center space-x-8 lg:space-x-10">
+                    <a href="sustainability.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
+                        <span>Sustainability</span>
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></div>
+                    </a>
+                    <a href="opening.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
+                        <span>Opening</span>
+                        <div class="absolute -bottom-2 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300"></div>
                     </a>
                     <a href="contact.html" class="relative group font-lato text-sm lg:text-base font-medium text-black hover:text-gray-600 transition-colors duration-300">
                         <span>Contact</span>
